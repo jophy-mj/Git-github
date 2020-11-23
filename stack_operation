@@ -1,0 +1,74 @@
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+int stack[100],top=-1,n;
+void push();
+void pop();
+void display();
+void main()
+{
+int ch;
+clrscr();
+printf("\n Enter the size of stack:");
+scanf("%d",&n);
+while(1)
+{
+printf("\n\tSTACK OPERATIONS USING ARRAY");
+printf("\n\t-------------------------------");
+printf("\n\t1.PUSH\n\t2.POP\n\t3.DISPLAY\n\t4.EXIT");
+printf("\n Enter the choice:");
+scanf("%d",&ch);
+switch(ch)
+{
+   case 1:push();
+	 break;
+   case 2:pop();
+	 break;
+   case 3:display();
+	 break;
+   case 4:exit(0);
+   default:printf("\n\t wrong choice");
+}
+}
+}
+void push()
+{
+int val;
+if(top==n-1)
+{
+printf("\n\t Stack is full!!");
+}
+else
+{
+printf("Enter a value to be pushed:");
+scanf("%d",&val);
+top=top+1;
+stack[top]=val;
+}
+}
+void pop()
+{
+if(top==-1)
+{
+printf("\n\t Stack is empty");
+}
+else
+{
+printf("\n\tThe popped elements id %d",stack[top]);
+top=top-1;
+}
+}
+void display()
+{
+int i;
+if(top==-1)
+{
+printf("\n\t Stack is empty");
+}
+else
+{
+printf("\n The elements in stack is:\n");
+for(i=top;i>=0;i--)
+ printf("\n %d",stack[i]);
+}
+}
