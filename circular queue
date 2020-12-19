@@ -1,0 +1,96 @@
+#include<stdio.h>
+#include<conio.h>
+#include<process.h>
+#define max 5
+int queue[max];
+int rear=-1;
+int front=-1;
+void insertion();
+void deletion();
+void display();
+void main()
+{
+int ch;
+clrscr();
+while(1)
+{
+printf("\n1.INSERTION\n2.DELETION\n3.Display\n4.EXIT\n");
+printf("Enter the choice:\n");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1:insertion();
+       break;
+case 2:deletion();
+       break;
+case 3:display();
+       break;
+case 4:exit(0);
+       break;
+default:printf("invalid choice\n");
+	break;
+}
+}
+getch();
+}
+void insertion()
+{
+int item;
+printf("\nInsertion\n");
+printf("************\n\n");
+if(rear==max-1)
+{
+printf("Overflow\n");
+}
+else
+{
+printf("Enter the item:\n");
+scanf("%d",&item);
+if(rear==-1)
+{
+rear=0;
+front=0;
+}
+else
+rear=rear+1;
+queue[rear]=item;
+}
+}
+void deletion()
+{
+int item;
+printf("\nDeletion\n");
+printf("************\n\n");
+if(front==-1)
+{
+printf("Underflow\n");
+}
+else
+{
+item=queue[front];
+if(front==rear)
+{
+front=-1;
+rear=-1;
+}
+else
+{
+front=front+1;
+}
+printf("%d is deleted\n");
+}
+}
+void display()
+{
+int i;
+printf("Display\n");
+printf("*********\n\n");
+if(front==-1)
+{
+printf("Queue is empty\n");
+}
+for(i=front;i<=rear;i++)
+{
+printf("%d\t",queue[i]);
+}
+}
